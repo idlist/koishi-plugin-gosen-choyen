@@ -17,7 +17,9 @@ class PluginOptions {
     for (let key in options) {
       if (Reflect.has(this, key)) this[key] = options[key]
     }
+    if (isNaN(this.defaultOffsetX)) this.defaultOffsetX = 200
     if (this.defaultOffsetX < 0) this.defaultOffsetX = 0
+    if (isNaN(this.maxOffsetX)) this.maxOffsetX = 1000
     if (this.maxOffsetX < 0) this.maxOffsetX = 0
   }
 }

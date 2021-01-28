@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-gosen-choyen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Send 5000Choyen style picture via koishi.js",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,14 @@
   },
   "author": "i'DLisT",
   "license": "MIT",
+  "homepage": "https://github.com/idlist/koishi-plugin-gosen-choyen#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idlist/koishi-plugin-gosen-choyen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/idlist/koishi-plugin-gosen-choyen/issues"
+  },
   "dependencies": {
     "canvas": "^2.6.1",
     "koishi-utils": "^3.2.1"
