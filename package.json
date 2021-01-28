@@ -1,0 +1,15 @@
+{
+  "name": "koishi-plugin-gosen-choyen",
+  "version": "0.1.0",
+  "description": "Send Gosen-Choyen style picture via koishi.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "note test/test.js"
+  },
+  "author": "i'DLisT",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "koishi-utils": "^3.2.1"
+  }
+}
