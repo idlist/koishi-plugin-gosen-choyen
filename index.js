@@ -12,11 +12,13 @@ class PluginOptions {
   constructor(options) {
     this.disableCQCode = false
     this.maxLength = 42
-    this.defaultXOffset = 200
+    this.defaultOffsetX = 200
     this.maxOffsetX = 1000
     for (let key in options) {
       if (Reflect.has(this, key)) this[key] = options[key]
     }
+    if (this.defaultOffsetX < 0) this.defaultOffsetX = 0
+    if (this.maxOffsetX < 0) this.maxOffsetX = 0
   }
 }
 
@@ -28,10 +30,12 @@ module.exports.apply = (ctx, pluginOptions) => {
 
   ctx.command('5k <upper> <lower>', '生成5000兆円风格字体')
     .usage('若upper或lower为""可使其为空；含有空格或以-开头的内容需要用""包围起来。')
-    .option('offset', '-x <px> 设置第二行偏移量（默认为200px）', { fallback: pOptions.defaultXOffset })
+    .option('offset', '-x <px> 设置第二行偏移量（默认为200px）')
     .option('reserve', '-r 保留CQ码')
     .example('5k 5000兆円 欲しい！  生成字体图')
     .action(({ session, options }, upper, lower) => {
+      logger.debug('plugin toggled.')
+
       if (upper == undefined) upper = ''
       if (lower == undefined) lower = ''
 
@@ -63,7 +67,7 @@ module.exports.apply = (ctx, pluginOptions) => {
       ctx.font = '100px shserif'
       const lowerWidth = ctx.measureText(lowerText).width
 
-      let lowerOffsetX = options.offset
+      let lowerOffsetX = !isNaN(options.offset) ? options.offset : pOptions.defaultOffsetX
       if (lowerOffsetX < 0) lowerOffsetX = 0
       if (lowerOffsetX > pOptions.maxOffsetX) lowerOffsetX = pOptions.maxOffsetX
       const offsetWidth = lowerOffsetX
