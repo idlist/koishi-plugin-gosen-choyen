@@ -1,14 +1,15 @@
 # koishi-plugin-gosen-choyen
 
-一个用于**[Koishi v2](https://github.com/koishijs/koishi)**的生成**5000兆円欲しい！**（想要五千兆円！）风格的插件。
+一个用于 **[Koishi v2](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
 
 微调自这个[5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了[node-canvas](https://github.com/Automattic/node-canvas)。
 
 ## 效果图
 
-<img width='200px' src='./examples/git_is_hard.png' align='left'>
+<img width='200px' src='./examples/git_is_hard.png'>
 
-<img width='200px' src='./examples/nantong.png' align='left'>
+<img width='200px' src='./examples/nantong.png'>
+
 
 ## 安装方法
 
