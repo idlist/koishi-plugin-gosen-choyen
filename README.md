@@ -32,7 +32,7 @@ module.exports = {
 或者在 **index.js** 中：
 
 ```js
-app.plugin(require(koishi-plugin-gosen-choyen))
+app.plugin(require('koishi-plugin-gosen-choyen'))
 ```
 
 ## 使用方法

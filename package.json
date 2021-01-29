@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-gosen-choyen",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Send 5000Choyen style picture via koishi.js",
   "main": "index.js",
   "scripts": {

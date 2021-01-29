@@ -205,10 +205,10 @@ module.exports.apply = (ctx, pluginOptions) => {
           if (err) throw err
           let content = buffer.toString('base64')
           session.$send(`[CQ:image,file=base64://${content}]`)
-          logger.success('image sent.')
+          logger.info('image sent.')
         } catch (err) {
           if (err) console.log(err)
-          logger.error('something went wrong when sending image.')
+          logger.warning('something went wrong when sending image.')
         }
       })
     })
