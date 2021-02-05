@@ -1,5 +1,7 @@
 # koishi-plugin-gosen-choyen
 
+[![npm](https://img.shields.io/npm/v/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
+
 一个用于 **[Koishi v2 / v3](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
 
 微调自这个[5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了[node-canvas](https://github.com/Automattic/node-canvas)。
