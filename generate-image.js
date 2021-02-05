@@ -1,44 +1,22 @@
 const { createCanvas, registerFont } = require('canvas')
 const { CQCode } = require('koishi-utils')
 
-registerFont('./fonts/shsans_heavy.otf', { family: 'shsans', weight: 'heavy' })
-registerFont('./fonts/shserif_bold.otf', { family: 'shserif', weight: 'bold' })
+registerFont(`${__dirname}/fonts/shsans_heavy.otf`, { family: 'shsans', weight: 'heavy' })
+registerFont(`${__dirname}/fonts/shserif_bold.otf`, { family: 'shserif', weight: 'bold' })
 
-const clearCQCode = str => {
-  return str.replace(/\[CQ:.+\]/g, '')
-}
+module.exports = (options, upper, lower) => {
+  // unescape
+  upper = CQCode.unescape(upper)
+  lower = CQCode.unescape(lower)
 
-module.exports = (session, options, upper, lower) => {
-  // content manipulation
-  if (upper == undefined) upper = ''
-  if (lower == undefined) lower = ''
-
-  if (options.reserve !== true) {
-    upper = clearCQCode(upper).trim()
-    lower = clearCQCode(lower).trim()
-  }
-
-  if (!upper && !lower) {
-    session.$send('没识别到内容。')
-    return
-  }
-
-  if (upper.length > options.maxLength || lower.length > options.maxLength) {
-    session.$send('内容太长了。')
-    return
-  }
-
-  let upperText = CQCode.unescape(upper)
-  let lowerText = CQCode.unescape(lower)
-
-  // canvas setting
+  // set canvas
   const canvas = createCanvas()
   const ctx = canvas.getContext('2d')
 
   ctx.font = '100px shsans'
-  const upperWidth = ctx.measureText(upperText).width
+  const upperWidth = ctx.measureText(upper).width
   ctx.font = '100px shserif'
-  const lowerWidth = ctx.measureText(lowerText).width
+  const lowerWidth = ctx.measureText(lower).width
   const offsetWidth = options.lowerOffsetX
 
   canvas.height = 270
@@ -58,7 +36,7 @@ module.exports = (session, options, upper, lower) => {
 
   ctx.strokeStyle = '#000'
   ctx.lineWidth = 18
-  ctx.strokeText(upperText, posx + 4, posy + 3)
+  ctx.strokeText(upper, posx + 4, posy + 3)
 
   grad = ctx.createLinearGradient(0, 24, 0, 122)
   grad.addColorStop(0.0, 'rgb(0,15,36)')
@@ -73,11 +51,11 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(1, 'rgb(50,50,50)')
   ctx.strokeStyle = grad
   ctx.lineWidth = 17
-  ctx.strokeText(upperText, posx + 4, posy + 3)
+  ctx.strokeText(upper, posx + 4, posy + 3)
 
   ctx.strokeStyle = '#000000'
   ctx.lineWidth = 10
-  ctx.strokeText(upperText, posx, posy)
+  ctx.strokeText(upper, posx, posy)
 
   grad = ctx.createLinearGradient(0, 20, 0, 100)
   grad.addColorStop(0, 'rgb(253,241,0)')
@@ -88,15 +66,15 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(1, 'rgb(243,196,11)')
   ctx.strokeStyle = grad
   ctx.lineWidth = 8
-  ctx.strokeText(upperText, posx, posy)
+  ctx.strokeText(upper, posx, posy)
 
   ctx.lineWidth = 4
   ctx.strokeStyle = '#000'
-  ctx.strokeText(upperText, posx + 2, posy - 2)
+  ctx.strokeText(upper, posx + 2, posy - 2)
 
   ctx.lineWidth = 4
   ctx.strokeStyle = '#FFFFFF'
-  ctx.strokeText(upperText, posx, posy - 2)
+  ctx.strokeText(upper, posx, posy - 2)
 
   grad = ctx.createLinearGradient(0, 20, 0, 100)
   grad.addColorStop(0, 'rgb(255, 100, 0)')
@@ -105,7 +83,7 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(1, 'rgb(5, 0, 0)')
   ctx.lineWidth = 1
   ctx.fillStyle = grad
-  ctx.fillText(upperText, posx, posy - 2)
+  ctx.fillText(upper, posx, posy - 2)
 
   grad = ctx.createLinearGradient(0, 20, 0, 100)
   grad.addColorStop(0, 'rgb(230, 0, 0)')
@@ -113,7 +91,7 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(0.51, 'rgb(240, 0, 0)')
   grad.addColorStop(1, 'rgb(5, 0, 0)')
   ctx.strokeStyle = grad
-  ctx.strokeText(upperText, posx, posy - 2)
+  ctx.strokeText(upper, posx, posy - 2)
 
   // generate lower text
   ctx.font = '100px shserif'
@@ -124,7 +102,7 @@ module.exports = (session, options, upper, lower) => {
 
   ctx.strokeStyle = '#000'
   ctx.lineWidth = 17
-  ctx.strokeText(lowerText, posx + 4, posy + 3)
+  ctx.strokeText(lower, posx + 4, posy + 3)
 
   grad = ctx.createLinearGradient(0 + offsetX, 20 + offsetY, 0 + offsetX, 118 + offsetY)
   grad.addColorStop(0, 'rgb(0,15,36)')
@@ -137,15 +115,15 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(1, 'rgb(50,50,50)')
   ctx.strokeStyle = grad
   ctx.lineWidth = 14
-  ctx.strokeText(lowerText, posx + 4, posy + 3)
+  ctx.strokeText(lower, posx + 4, posy + 3)
 
   ctx.strokeStyle = '#10193A'
   ctx.lineWidth = 12
-  ctx.strokeText(lowerText, posx, posy)
+  ctx.strokeText(lower, posx, posy)
 
   ctx.strokeStyle = '#DDD'
   ctx.lineWidth = 7
-  ctx.strokeText(lowerText, posx, posy)
+  ctx.strokeText(lower, posx, posy)
 
   grad = ctx.createLinearGradient(0 + offsetX, 20 + offsetY, 0 + offsetX, 100 + offsetY)
   grad.addColorStop(0, 'rgb(16,25,58)')
@@ -155,7 +133,7 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(1, 'rgb(16,25,58)')
   ctx.strokeStyle = grad
   ctx.lineWidth = 6
-  ctx.strokeText(lowerText, posx, posy)
+  ctx.strokeText(lower, posx, posy)
 
   grad = ctx.createLinearGradient(0 + offsetX, 20 + offsetY, 0 + offsetX, 100 + offsetY)
   grad.addColorStop(0, 'rgb(245,246,248)')
@@ -166,7 +144,7 @@ module.exports = (session, options, upper, lower) => {
   grad.addColorStop(0.52, 'rgb(196,215,222)')
   grad.addColorStop(1.0, 'rgb(255,255,255)')
   ctx.fillStyle = grad
-  ctx.fillText(lowerText, posx, posy - 3)
+  ctx.fillText(lower, posx, posy - 3)
 
   // output canvas
   return canvas

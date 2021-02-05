@@ -1,6 +1,6 @@
 # koishi-plugin-gosen-choyen
 
-一个用于 **[Koishi v2](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
+一个用于 **[Koishi v2 / v3](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
 
 微调自这个[5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了[node-canvas](https://github.com/Automattic/node-canvas)。
 
@@ -56,6 +56,7 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 
 | 配置项           | 默认值  | 说明                                                         |
 | ---------------- | ------- | ------------------------------------------------------------ |
+| `version`        | 2       | Koishi的版本，可选2或3。                                     |
 | `asSubcommand`   | `false` | 若为字符串，则将此指令作为子指令注册到该指令之下；否则注册为普通指令。 |
 | `disableCQCode`  | `false` | 是否强制清除CQ码，`true`时将覆盖`--reserve`                  |
 | `maxLength`      | 42      | 一行文字的最长文字数                                         |
