@@ -4,7 +4,7 @@ class PluginOptions {
   constructor(pOptions) {
     // default value for plugin options
     this.version = 2
-    this.asSubcommand = pOptions.asSubcommand ?? false
+    this.asSubcommand = (pOptions && pOptions.asSubcommand) ?? false
     this.disableCQCode = false
     this.maxLength = 42
     this.defaultOffsetX = 200
