@@ -1,6 +1,7 @@
 # koishi-plugin-gosen-choyen
 
 [![npm](https://img.shields.io/npm/v/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
+[![npm-download](https://img.shields.io/npm/dw/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 
 一个用于 **[Koishi v2 / v3](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
 
@@ -55,6 +56,8 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 | `-r, --reserve` | `false`                | 保留CQ码                   |
 
 ## 插件配置项
+
+这个插件无需任何配置项即可使用，同时也提供了一些可能会用到的配置项。一些不太可能会用到的配置项就摸了。
 
 | 配置项           | 默认值  | 说明                                                         |
 | ---------------- | ------- | ------------------------------------------------------------ |
