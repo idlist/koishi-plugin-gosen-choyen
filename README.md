@@ -52,7 +52,7 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 
 | 可选选项        | 默认值                 | 说明                       |
 | --------------- | ---------------------- | -------------------------- |
-| `-x, --offset`  | 200 (`defaultXOffset`) | 设置第二行偏移量，单位为px |
+| `-x, --offset`  | 200 (`defaultOffsetX`) | 设置第二行偏移量，单位为px |
 | `-r, --reserve` | `false`                | 保留CQ码                   |
 
 ## 插件配置项
