@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 [![npm-download](https://img.shields.io/npm/dw/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 
-一个用于 **[Koishi v2 / v3](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
+一个用于 **[Koishi v3 / v2](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
 
 微调自这个[5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了[node-canvas](https://github.com/Automattic/node-canvas)。
 
@@ -61,7 +61,7 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 
 | 配置项           | 默认值  | 说明                                                         |
 | ---------------- | ------- | ------------------------------------------------------------ |
-| `version`        | 2       | Koishi的版本，可选2或3。                                     |
+| `version`        | 3       | Koishi的版本，可选2或3。                                     |
 | `asSubcommand`   | `false` | 若为字符串，则将此指令作为子指令注册到该指令之下 **\*1**；否则注册为普通指令。 |
 | `disableCQCode`  | `false` | 是否强制清除CQ码，`true`时将覆盖`--reserve`                  |
 | `maxLength`      | 42      | 一行文字的最长文字数                                         |
@@ -96,3 +96,11 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 - **发现了个bug**
 
 这很正常。
+
+## 更新笔记
+
+### 1.0
+
+默认的Koishi版本被修改为为Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
+
+推荐使用Koishi自带的日志来进行行为的记录，例如把command行为的日志等级设置为3（debug）。
