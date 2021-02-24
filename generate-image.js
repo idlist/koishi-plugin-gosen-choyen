@@ -1,13 +1,13 @@
 const { createCanvas, registerFont } = require('canvas')
-const { CQCode } = require('koishi-utils')
+const { s } = require('koishi-utils')
 
 registerFont(`${__dirname}/fonts/shsans_heavy.otf`, { family: 'shsans', weight: 'heavy' })
 registerFont(`${__dirname}/fonts/shserif_bold.otf`, { family: 'shserif', weight: 'bold' })
 
 module.exports = (options, upper, lower) => {
   // unescape
-  upper = CQCode.unescape(upper)
-  lower = CQCode.unescape(lower)
+  upper = s.unescape(upper)
+  lower = s.unescape(lower)
 
   // set canvas
   const canvas = createCanvas()
