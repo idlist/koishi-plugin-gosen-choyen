@@ -47,11 +47,8 @@ class Content {
   constructor(options, upper, lower) {
     this.errCode = 0
 
-    if (upper == undefined) upper = ''
-    if (lower == undefined) lower = ''
-
-    upper = upper == undefined ? '' : upper.toString()
-    lower = lower == undefined ? '' : lower.toString()
+    upper = (typeof upper == 'undefined') ? '' : upper.toString()
+    lower = (typeof lower == 'undefined') ? '' : lower.toString()
 
     const clearCQCode = (str) => {
       return str.replace(/\[CQ:.+\]/g, '')
