@@ -72,7 +72,7 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 
 ## Q&A
 
-- **为什么我卡在这一步？**
+- 为什么我卡在这一步？
 
 ```shell
 > canvas@2.6.1 install E:\dev\koishi-plugin-gosen-choyen\node_modules\canvas
@@ -89,15 +89,15 @@ node-pre-gyp WARN Using needle for node-pre-gyp https download
 npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/
 ```
 
-- **我想要【某个选项】（比如缩放字体）**
+- 我想要【某个选项】（比如缩放字体）
 
 建议`git clone`这个仓库然后自己拿去改一改，代码真的很简单的！
 
-- **发现了个bug**
+- 发现了个bug
 
 这很正常。
 
-## 更新笔记
+## 更新记录
 
 ### 1.0
 
