@@ -1,18 +1,18 @@
 const generateImage = require('./generate-image')
 
-class PluginOptions {
-  constructor(pOptions) {
+class Config {
+  constructor(config) {
     // default value for plugin options
     this.version = 3
-    this.asSubcommand = (pOptions && pOptions.asSubcommand) ?? false
+    this.asSubcommand = (config && config.asSubcommand) ?? false
     this.disableCQCode = false
     this.maxLength = 42
     this.defaultOffsetX = 200
     this.maxOffsetX = 1000
 
     // write user plugin options
-    for (let key in pOptions) {
-      if (Reflect.has(this, key)) this[key] = pOptions[key]
+    for (let key in config) {
+      if (Reflect.has(this, key)) this[key] = config[key]
     }
 
     // check boundary conditions
@@ -27,18 +27,18 @@ class PluginOptions {
 }
 
 class Options {
-  constructor(options, pOptions) {
+  constructor(options, config) {
     // disableCQcode -> reserve
     this.reserve = options.reserve ?? false
-    if (pOptions.disableCQCode) this.reserve = false
+    if (config.disableCQCode) this.reserve = false
 
     // maxLength
-    this.maxLength = pOptions.maxLength
+    this.maxLength = config.maxLength
 
     // defaultOffsetX & maxOffsetX -> lowerOffsetX
-    let lowerOffsetX = !isNaN(options.offset) ? options.offset : pOptions.defaultOffsetX
+    let lowerOffsetX = !isNaN(options.offset) ? options.offset : config.defaultOffsetX
     if (lowerOffsetX < 0) lowerOffsetX = 0
-    if (lowerOffsetX > pOptions.maxOffsetX) lowerOffsetX = pOptions.maxOffsetX
+    if (lowerOffsetX > config.maxOffsetX) lowerOffsetX = config.maxOffsetX
     this.lowerOffsetX = lowerOffsetX
   }
 }
@@ -76,8 +76,8 @@ class Content {
 
 module.exports.name = 'gosen-choyen'
 
-module.exports.apply = (ctx, pluginOptions) => {
-  let pOptions = new PluginOptions(pluginOptions)
+module.exports.apply = (ctx, config) => {
+  config = new Config(config)
   let logger = ctx.logger('gosen-choyen')
 
   let thisCommand = ctx
@@ -88,11 +88,11 @@ module.exports.apply = (ctx, pluginOptions) => {
     .example('5k 5000兆円 欲しい！  生成字体图')
 
   // version
-  switch (pOptions.version) {
+  switch (config.version) {
   case 2:
     thisCommand.action(async ({ session, options }, upper, lower) => {
       // initialize options
-      options = new Options(options, pOptions)
+      options = new Options(options, config)
 
       // manipulate content
       const content = new Content(options, upper, lower)
@@ -122,7 +122,7 @@ module.exports.apply = (ctx, pluginOptions) => {
   case 3:
     thisCommand.action(async ({ options }, upper, lower) => {
       // initialize options
-      options = new Options(options, pOptions)
+      options = new Options(options, config)
 
       // manipulate content
       const content = new Content(options, upper, lower)
@@ -154,7 +154,7 @@ module.exports.apply = (ctx, pluginOptions) => {
   }
 
   // asSubcommand
-  if (pOptions.version && pOptions.asSubcommand) {
-    ctx.command(pOptions.asSubcommand).subcommand('5k')
+  if (config.version && config.asSubcommand) {
+    ctx.command(config.asSubcommand).subcommand('5k')
   }
 }
