@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-gosen-choyen",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Send 5000Choyen style picture via koishi.js",
   "main": "index.js",
   "author": "i'DLisT",
@@ -17,12 +17,12 @@
   "bugs": {
     "url": "https://github.com/idlist/koishi-plugin-gosen-choyen/issues"
   },
-  "dependencies": {
-    "canvas": "^2.6.1",
-    "koishi-utils": "^4.0.0"
-  },
+
   "scripts": {
-    "test": "node test/test.js",
-    "ci": "npm ci --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/"
+    "i": "npm i --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/"
+  },
+  "dependencies": {
+    "canvas": "^2.0.0",
+    "koishi-utils": "^4.0.0"
   }
 }

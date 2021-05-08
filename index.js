@@ -1,4 +1,5 @@
 const generateImage = require('./generate-image')
+const { s } = require('koishi-utils')
 
 class Config {
   constructor(config) {
@@ -140,7 +141,7 @@ module.exports.apply = (ctx, config) => {
       const canvas = generateImage(options, content.upper, content.lower)
       try {
         const imageData = canvas.toBuffer().toString('base64')
-        return `[CQ:image,file=base64://${imageData}]`
+        return s('image', { url: `base64://${imageData}`})
       } catch (err) {
         logger.warn('something went wrong when sending image')
         console.log(err)
