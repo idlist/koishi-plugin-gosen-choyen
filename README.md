@@ -20,23 +20,7 @@
 npm i koishi-plugin-gosen-choyen
 ```
 
-然后，在 **koishi.config.js** 中：
-
-```js
-module.exports = {
-  plugins: [
-    // your other plugins...
-    ['gosen-choyen'],
-  ],
-  // other configs...
-]
-```
-
-或者在 **index.js** 中：
-
-```js
-app.plugin(require('koishi-plugin-gosen-choyen'))
-```
+然后参照 [安装插件](https://koishi.js.org/guide/context.html#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6) 继续安装。
 
 ## 使用方法
 
@@ -50,10 +34,10 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 
 需要两行文字的其中一行不为空才会生成图片。
 
-| 可选选项        | 默认值                 | 说明                       |
-| --------------- | ---------------------- | -------------------------- |
-| `-x, --offset`  | 200 (`defaultOffsetX`) | 设置第二行偏移量，单位为px |
-| `-r, --reserve` | `false`                | 保留CQ码                   |
+| 可选选项        | 默认值                 | 说明                        |
+| --------------- | ---------------------- | --------------------------- |
+| `-x, --offset`  | 200 (`defaultOffsetX`) | 设置第二行偏移量，单位为 px |
+| `-r, --reserve` | `false`                | 保留 CQ 码                  |
 
 ## 插件配置项
 
@@ -61,14 +45,14 @@ app.plugin(require('koishi-plugin-gosen-choyen'))
 
 | 配置项           | 默认值  | 说明                                                         |
 | ---------------- | ------- | ------------------------------------------------------------ |
-| `version`        | 3       | Koishi的版本，可选2或3。                                     |
-| `asSubcommand`   | `false` | 若为字符串，则将此指令作为子指令注册到该指令之下 **\*1**；否则注册为普通指令。 |
-| `disableCQCode`  | `false` | 是否强制清除CQ码，`true`时将覆盖`--reserve`                  |
+| `version`        | 3       | Koishi的版本，可选 2 或 3                                    |
+| `asSubcommand`   | `false` | 若为字符串，则将此指令作为子指令注册到该指令之下 **\*1**；否则注册为普通指令 |
+| `disableCQCode`  | `false` | 是否强制清除CQ码，`true` 时将覆盖 `--reserve`                |
 | `maxLength`      | 42      | 一行文字的最长文字数                                         |
-| `defaultOffsetX` | 200     | 第二行的默认偏移量，最小取0                                  |
-| `maxOffsetX`     | 1000    | 第二行的最大偏移量，即`--offset`的最大值，最小取0            |
+| `defaultOffsetX` | 200     | 第二行的默认偏移量，最小取 0                                 |
+| `maxOffsetX`     | 1000    | 第二行的最大偏移量，即 `--offset` 的最大值，最小取 0         |
 
-**\*1**: 由于Koishi注册指令名的机制，若需要使用这个配置项，请先注册作为主指令的指令，再注册gosen-choyen。
+**\*1**: 由于 Koishi 注册指令名的机制，若需要使用这个配置项，请先注册作为主指令的指令，再注册 gosen-choyen。
 
 ## Q&A
 
@@ -89,7 +73,7 @@ node-pre-gyp WARN Using needle for node-pre-gyp https download
 npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/
 ```
 
-- 我想要【某个选项】（比如缩放字体）
+- 我想要某个选项（比如缩放字体）
 
 建议`git clone`这个仓库然后自己拿去改一改，代码真的很简单的！
 
@@ -99,8 +83,12 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 ## 更新记录
 
+### 1.0.3
+
+修了点 bug 和与预期不符的行为。
+
 ### 1.0
 
-默认的Koishi版本被修改为为Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
+默认的 Koishi 版本被修改为为 Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
 
-推荐使用Koishi自带的日志来进行行为的记录，例如把command行为的日志等级设置为3（debug）。
+若有需要，推荐使用 Koishi 自带的日志来进行行为的记录，例如把 command 行为的日志等级设置为 3（debug）。
