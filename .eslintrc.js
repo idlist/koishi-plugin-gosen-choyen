@@ -16,6 +16,6 @@ module.exports = {
     'no-unused-vars': ['warn'],
     'semi': ['warn', 'never'],
     'quotes': ['warn', 'single'],
-    'indent': ['warn', 2, { 'SwitchCase': 0 }]
+    'indent': ['warn', 2, { 'SwitchCase': 1 }]
   }
 }

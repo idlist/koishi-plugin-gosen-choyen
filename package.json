@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-gosen-choyen",
-  "version": "1.0.4",
-  "description": "Send 5000Choyen style picture via koishi.js",
+  "version": "1.0.5",
+  "description": "Send 5000Choyen style picture via Koishi.js.",
   "main": "index.js",
   "author": "i'DLisT",
   "license": "MIT",
@@ -24,5 +24,8 @@
   "dependencies": {
     "canvas": "^2.0.0",
     "koishi-utils": "^4.0.0"
+  },
+  "peerDependencies": {
+    "koishi-core": ">=2"
   }
 }
