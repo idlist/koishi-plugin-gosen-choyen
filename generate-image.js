@@ -20,7 +20,7 @@ module.exports = (options, upper, lower) => {
   const offsetWidth = options.lowerOffsetX
 
   canvas.height = 270
-  canvas.width = Math.max(upperWidth + 80, lowerWidth + offsetWidth + 70)
+  canvas.width = Math.max(upperWidth + 80, lowerWidth + offsetWidth + 90)
   ctx.lineJoin = 'round'
   ctx.fillStyle = 'white'
   ctx.fillRect(0, 0, canvas.width, canvas.height)
