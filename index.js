@@ -90,68 +90,68 @@ module.exports.apply = (ctx, config) => {
 
   // version
   switch (config.version) {
-  case 2:
-    thisCommand.action(async ({ session, options }, upper, lower) => {
-      // initialize options
-      options = new Options(options, config)
+    case 2:
+      thisCommand.action(async ({ session, options }, upper, lower) => {
+        // initialize options
+        options = new Options(options, config)
 
-      // manipulate content
-      const content = new Content(options, upper, lower)
-      if (content.errCode) {
-        logger.debug('arguments or options are incorrect')
-        switch (content.errCode) {
-        case 1:
-          session.$send('没识别到内容。')
-          return
-        case 2:
-          session.$send('内容太长了。')
-          return
+        // manipulate content
+        const content = new Content(options, upper, lower)
+        if (content.errCode) {
+          logger.debug('arguments or options are incorrect')
+          switch (content.errCode) {
+            case 1:
+              session.$send('没识别到内容。')
+              return
+            case 2:
+              session.$send('内容太长了。')
+              return
+          }
         }
-      }
 
-      // generate and send image
-      const canvas = generateImage(options, content.upper, content.lower)
-      try {
-        const imageData = canvas.toBuffer().toString('base64')
-        session.$send(`[CQ:image,file=base64://${imageData}]`)
-      } catch (err) {
-        logger.warn('something went wrong when sending image')
-        console.log(err)
-      }
-    })
-    break
-  case 3:
-    thisCommand.action(async ({ options }, upper, lower) => {
-      // initialize options
-      options = new Options(options, config)
-
-      // manipulate content
-      const content = new Content(options, upper, lower)
-      if (content.errCode) {
-        logger.debug('arguments or options were incorrect')
-        switch (content.errCode) {
-        case 1:
-          return '没识别到内容。'
-        case 2:
-          return '内容太长了。'
+        // generate and send image
+        const canvas = generateImage(options, content.upper, content.lower)
+        try {
+          const imageData = canvas.toBuffer().toString('base64')
+          session.$send(`[CQ:image,file=base64://${imageData}]`)
+        } catch (err) {
+          logger.warn('something went wrong when sending image')
+          console.log(err)
         }
-      }
+      })
+      break
+    case 3:
+      thisCommand.action(async ({ options }, upper, lower) => {
+        // initialize options
+        options = new Options(options, config)
 
-      // generate and send image
-      const canvas = generateImage(options, content.upper, content.lower)
-      try {
-        const imageData = canvas.toBuffer().toString('base64')
-        return s('image', { url: `base64://${imageData}`})
-      } catch (err) {
-        logger.warn('something went wrong when sending image')
-        console.log(err)
-      }
-    })
-    break
-  default:
-    logger.error('version is not correct or supported, gosen-choyen is disposed')
-    ctx.command('5k').dispose()
-    break
+        // manipulate content
+        const content = new Content(options, upper, lower)
+        if (content.errCode) {
+          logger.debug('arguments or options were incorrect')
+          switch (content.errCode) {
+            case 1:
+              return '没识别到内容。'
+            case 2:
+              return '内容太长了。'
+          }
+        }
+
+        // generate and send image
+        const canvas = generateImage(options, content.upper, content.lower)
+        try {
+          const imageData = canvas.toBuffer().toString('base64')
+          return s('image', { url: `base64://${imageData}` })
+        } catch (err) {
+          logger.warn('something went wrong when sending image')
+          console.log(err)
+        }
+      })
+      break
+    default:
+      logger.error('version is not correct or supported, gosen-choyen is disposed')
+      ctx.command('5k').dispose()
+      break
   }
 
   // asSubcommand
