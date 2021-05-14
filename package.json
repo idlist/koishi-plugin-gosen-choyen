@@ -22,10 +22,9 @@
     "i": "npm i --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/"
   },
   "dependencies": {
-    "canvas": "^2.0.0",
-    "koishi-utils": "^4.0.0"
+    "canvas": "^2.7.0"
   },
   "peerDependencies": {
-    "koishi-core": ">=2"
+    "koishi-core": ">=3"
   }
 }
