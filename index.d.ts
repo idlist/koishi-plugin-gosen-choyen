@@ -30,7 +30,7 @@ export interface ConfigObject {
    *
    * @default 1000
    */
-  maxOffsetX
+  maxOffsetX?: number
 }
 
 export const apply: (ctx: Context, config: ConfigObject) => void
