@@ -1,5 +1,5 @@
 const { createCanvas, registerFont } = require('canvas')
-const { s } = require('koishi-utils')
+const { s } = require('koishi')
 
 registerFont(`${__dirname}/fonts/shsans_heavy.otf`, { family: 'shsans', weight: 'heavy' })
 registerFont(`${__dirname}/fonts/shserif_bold.otf`, { family: 'shserif', weight: 'bold' })

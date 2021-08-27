@@ -34,22 +34,21 @@ npm i koishi-plugin-gosen-choyen
 
 需要两行文字的其中一行不为空才会生成图片。
 
-| 可选选项        | 默认值                 | 说明                        |
-| --------------- | ---------------------- | --------------------------- |
-| `-x, --offset`  | 200 (`defaultOffsetX`) | 设置第二行偏移量，单位为 px |
-| `-r, --reserve` | `false`                | 保留 CQ 码                  |
+| 可选选项 | 默认值 | 说明 |
+| - | - | - |
+| `-x, --offset` | 200 (`defaultOffsetX`) | 设置第二行偏移量，单位为 px |
+| `-r, --reserve` | `false` | 保留 CQ 码 |
 
 ## 插件配置项
 
 这个插件无需任何配置项即可使用，同时也提供了一些可能会用到的配置项。一些不太可能会用到的配置项就摸了。
 
-| 配置项           | 默认值  | 说明                                                         |
-| ---------------- | ------- | ------------------------------------------------------------ |
-| `asSubcommand`   | `false` | 若为字符串，则将此指令作为子指令注册到该指令之下 **\*1**；否则注册为普通指令 |
-| `disableCQCode`  | `false` | 是否强制清除CQ码，`true` 时将覆盖 `--reserve`                |
-| `maxLength`      | 42      | 一行文字的最长文字数                                         |
-| `defaultOffsetX` | 200     | 第二行的默认偏移量，最小取 0                                 |
-| `maxOffsetX`     | 1000    | 第二行的最大偏移量，即 `--offset` 的最大值，最小取 0         |
+| 配置项 | 默认值 | 说明 |
+| - | - | - |
+| `disableCQCode` | `false` | 是否强制清除CQ码，`true` 时将覆盖 `--reserve` |
+| `maxLength` | 42 | 一行文字的最长文字数 |
+| `defaultOffsetX` | 200 | 第二行的默认偏移量，单位为 `px`，最小取 0 |
+| `maxOffsetX` | 1000 | 第二行的最大偏移量，即 `--offset` 的最大值，最小取 0 |
 
 **\*1**: 由于 Koishi 注册指令名的机制，若需要使用这个配置项，请先注册作为主指令的指令，再注册 gosen-choyen。
 
@@ -81,6 +80,10 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 这很正常。
 
 ## 更新记录
+
+### 当前（未发版）
+
+取消了 `asSubcommand` 配置项，请使用 `ctx.command` 进行复写以实现相同的效果。
 
 ### 1.0.3
 

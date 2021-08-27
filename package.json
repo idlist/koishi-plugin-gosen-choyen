@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "Send 5000Choyen style picture via Koishi.js.",
   "main": "index.js",
-  "author": "i'DLisT",
+  "author": "i'DLisT <me@idl.ist> (https://idl.ist/)",
   "license": "MIT",
   "keywords": [
     "koishi",

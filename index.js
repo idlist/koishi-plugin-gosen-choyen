@@ -1,10 +1,10 @@
+const { s } = require('koishi')
+
 const generateImage = require('./generate-image')
-const { s } = require('koishi-core')
 
 class Config {
   constructor(config) {
     // default value for plugin options
-    this.asSubcommand = (config && config.asSubcommand) ?? false
     this.disableCQCode = false
     this.maxLength = 42
     this.defaultOffsetX = 200
@@ -111,9 +111,4 @@ module.exports.apply = (ctx, config) => {
       console.log(err)
     }
   })
-
-  // asSubcommand
-  if (config.asSubcommand) {
-    ctx.command(config.asSubcommand).subcommand('5k')
-  }
 }
