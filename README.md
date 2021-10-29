@@ -116,7 +116,7 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 取消了 `asSubcommand` 配置项，请使用 `ctx.command` 进行复写以实现相同的效果。
 
-将字体文件抽出，
+将字体文件的配置项抽了出来，现在这个插件本身没有那么大了。
 
 ### 1.0.3
 
