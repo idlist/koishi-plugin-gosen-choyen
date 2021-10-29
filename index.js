@@ -73,7 +73,7 @@ module.exports.apply = async (ctx, config) => {
   if (config.lower.weight) lowerFormat.font = config.lower.weight
 
   if (!upperFormat.font || !lowerFormat.font) {
-    logger.error('Fonts are not provided. The plugin is disposed.')
+    logger.error('Fonts are not provided. The plugin is not installed.')
     return
   }
 
