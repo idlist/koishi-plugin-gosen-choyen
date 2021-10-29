@@ -3,16 +3,15 @@
 [![npm](https://img.shields.io/npm/v/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 [![npm-download](https://img.shields.io/npm/dw/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 
-一个用于 **[Koishi v3 / v2](https://github.com/koishijs/koishi)** 的生成 **5000兆円欲しい！** （想要五千兆円！）风格的插件。
+一个用于 **[Koishi v3](https://github.com/koishijs/koishi)** 的生成 **5000 兆円欲しい！** （想要五千兆円！）风格的插件。
 
-微调自这个[5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了[node-canvas](https://github.com/Automattic/node-canvas)。
+微调自这个 [5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了 [node-canvas](https://github.com/Automattic/node-canvas)。
 
 ## 效果图
 
 <img width='200px' src='./examples/git_is_hard.png'>
 
 <img width='200px' src='./examples/nantong.png'>
-
 
 ## 安装方法
 
@@ -41,16 +40,48 @@ npm i koishi-plugin-gosen-choyen
 
 ## 插件配置项
 
-这个插件无需任何配置项即可使用，同时也提供了一些可能会用到的配置项。一些不太可能会用到的配置项就摸了。
+这个插件需要配置以下配置项：
 
 | 配置项 | 默认值 | 说明 |
 | - | - | - |
-| `disableCQCode` | `false` | 是否强制清除CQ码，`true` 时将覆盖 `--reserve` |
+| `upper` | `{}` | 上行文字使用的字体配置 **\*1** |
+| `lower` | `{}` | 下行文字使用的字体配置 **\*1** |
+
+**\*1** 有两种配置方式：
+
+1. 配置字体文件相对路径：
+
+```js
+{
+  path: './path/to/font/file'    // 字体文件相对工作目录的路径
+}
+```
+
+或者
+
+```js
+{
+  path: 'C://path/to/font/file' // 字体文件的绝对路径
+}
+```
+
+2. 配置字体名字与字重：
+
+```js
+{
+  name: 'my-font',              // 字体名
+  weight: 'normal'              // 字重
+}
+```
+
+同时，也提供了一些可能会用到的可选配置项：
+
+| 配置项 | 默认值 | 说明 |
+| - | - | - |
+| `disableCQCode` | `false` | 是否强制清除 CQ 码，`true` 时将覆盖 `--reserve` |
 | `maxLength` | 42 | 一行文字的最长文字数 |
 | `defaultOffsetX` | 200 | 第二行的默认偏移量，单位为 `px`，最小取 0 |
 | `maxOffsetX` | 1000 | 第二行的最大偏移量，即 `--offset` 的最大值，最小取 0 |
-
-**\*1**: 由于 Koishi 注册指令名的机制，若需要使用这个配置项，请先注册作为主指令的指令，再注册 gosen-choyen。
 
 ## Q&A
 
@@ -63,9 +94,9 @@ npm i koishi-plugin-gosen-choyen
 node-pre-gyp WARN Using needle for node-pre-gyp https download
 ```
 
-这是因为你正在国内使用npm，而needle在国内是几乎下载不动的。
+这是因为你正在国内使用 npm，而 needle 在国内是几乎下载不动的。
 
-建议使用科学上网，或者提前使用其他国内镜像源安装node-canvas或是其中的二进制文件，比如下面这条：
+建议使用科学上网，或者提前使用其他国内镜像源安装 node-canvas 或是其中的二进制文件，比如下面这条：
 
 ```shell
 npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/
@@ -75,15 +106,17 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 建议`git clone`这个仓库然后自己拿去改一改，代码真的很简单的！
 
-- 发现了个bug
+- 发现了个 bug
 
 这很正常。
 
 ## 更新记录
 
-### 当前（未发版）
+### 1.1
 
 取消了 `asSubcommand` 配置项，请使用 `ctx.command` 进行复写以实现相同的效果。
+
+将字体文件抽出，
 
 ### 1.0.3
 

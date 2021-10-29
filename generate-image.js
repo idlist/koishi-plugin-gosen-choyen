@@ -1,23 +1,27 @@
-const { createCanvas, registerFont } = require('canvas')
-const { s } = require('koishi')
+const { createCanvas } = require('canvas')
 
-registerFont(`${__dirname}/fonts/shsans_heavy.otf`, { family: 'shsans', weight: 'heavy' })
-registerFont(`${__dirname}/fonts/shserif_bold.otf`, { family: 'shserif', weight: 'bold' })
-
-module.exports = (options, upper, lower) => {
-  // unescape
-  upper = s.unescape(upper)
-  lower = s.unescape(lower)
+/**
+ * @param {string} upper
+ * @param {string} lower
+ * @param {import('./index').ImageGeneratorOptions} options
+ * @returns {import('canvas').Canvas}
+ */
+module.exports = (upper, lower, options) => {
+  // shorthand variable names
+  const uf = options.upper.font
+  const uw = options.upper.weight
+  const lf = options.lower.font
+  const lw = options.lower.weight
 
   // set canvas
   const canvas = createCanvas()
   const ctx = canvas.getContext('2d')
 
-  ctx.font = '100px shsans'
+  ctx.font = `${uw} 100px ${uf}`
   const upperWidth = ctx.measureText(upper).width
-  ctx.font = '100px shserif'
+  ctx.font = `${lw} 100px ${lf}`
   const lowerWidth = ctx.measureText(lower).width
-  const offsetWidth = options.lowerOffsetX
+  const offsetWidth = options.offsetX
 
   canvas.height = 270
   canvas.width = Math.max(upperWidth + 80, lowerWidth + offsetWidth + 90)
@@ -30,7 +34,8 @@ module.exports = (options, upper, lower) => {
   let posx, posy, grad
 
   // generate upper text
-  ctx.font = '100px shsans'
+  ctx.font = `${uw} 100px ${uf}`
+
   posx = 70
   posy = 100
 
@@ -94,7 +99,8 @@ module.exports = (options, upper, lower) => {
   ctx.strokeText(upper, posx, posy - 2)
 
   // generate lower text
-  ctx.font = '100px shserif'
+  ctx.font = `${lw} 100px ${lf}`
+
   let offsetX = offsetWidth
   let offsetY = 130
   posx = offsetX + 130
