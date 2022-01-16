@@ -1,25 +1,22 @@
-const { createCanvas } = require('canvas')
-
 /**
+ * @param {import('koishi-plugin-canvas').default} ctxCanvas
  * @param {string} upper
  * @param {string} lower
  * @param {import('./index').ImageGeneratorOptions} options
- * @returns {import('canvas').Canvas}
+ * @returns {import('koishi-plugin-canvas').Canvas}
  */
-module.exports = (upper, lower, options) => {
-  // shorthand variable names
-  const uf = options.upper.font
-  const uw = options.upper.weight
-  const lf = options.lower.font
-  const lw = options.lower.weight
+module.exports = (ctxCanvas, upper, lower, options) => {
+  // Shorthand variable names.
+  const fontUpper = `${options.upper.weight} 100px ${options.upper.font}`
+  const fontLower = `${options.lower.weight} 100px ${options.lower.font}`
 
-  // set canvas
-  const canvas = createCanvas()
+  // Set canvas.
+  const canvas = ctxCanvas.createCanvas()
   const ctx = canvas.getContext('2d')
 
-  ctx.font = `${uw} 100px ${uf}`
+  ctx.font = fontUpper
   const upperWidth = ctx.measureText(upper).width
-  ctx.font = `${lw} 100px ${lf}`
+  ctx.font = fontLower
   const lowerWidth = ctx.measureText(lower).width
   const offsetWidth = options.offsetX
 
@@ -30,11 +27,11 @@ module.exports = (upper, lower, options) => {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.setTransform(1, 0, -0.4, 1, 0, 0)
 
-  // define auxillary variables
+  // Define auxillary variables.
   let posx, posy, grad
 
-  // generate upper text
-  ctx.font = `${uw} 100px ${uf}`
+  // Generate upper text.
+  ctx.font = fontUpper
 
   posx = 70
   posy = 100
@@ -99,10 +96,10 @@ module.exports = (upper, lower, options) => {
   ctx.strokeText(upper, posx, posy - 2)
 
   // generate lower text
-  ctx.font = `${lw} 100px ${lf}`
+  ctx.font = fontLower
 
-  let offsetX = offsetWidth
-  let offsetY = 130
+  const offsetX = offsetWidth
+  const offsetY = 130
   posx = offsetX + 130
   posy = offsetY + 100
 

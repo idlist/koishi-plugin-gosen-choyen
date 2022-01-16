@@ -112,7 +112,11 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 ## 更新记录
 
-### 1.1
+### 2.0.0
+
+对 v4 做了一个很简陋的适配。如果仍然需要用 v3 请使用 v0.1 版本。
+
+### 1.1.0
 
 取消了 `asSubcommand` 配置项，请使用 `ctx.command` 进行复写以实现相同的效果。
 
@@ -122,7 +126,7 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 修了点 bug 和与预期不符的行为。
 
-### 1.0
+### 1.0.0
 
 默认的 Koishi 版本被修改为为 Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
 

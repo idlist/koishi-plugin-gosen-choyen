@@ -1,20 +1,28 @@
 const { access } = require('fs/promises')
 const { resolve } = require('path')
 const { cwd } = require('process')
-
 const { s } = require('koishi')
-const { registerFont } = require('canvas')
-
 const generateImage = require('./generate-image')
 
+
 module.exports.name = 'gosen-choyen'
+
+module.exports.using = ['canvas']
 
 /**
  * @param {import('koishi').Context} ctx
  * @param {import('./index').ConfigObject} config
  */
 module.exports.apply = async (ctx, config) => {
-  let logger = ctx.logger('gosen-choyen')
+  const logger = ctx.logger('gosen-choyen')
+
+  try {
+    // Require for checking and type linting
+    require('koishi-plugin-canvas')
+  } catch {
+    console.log('Dependency plugin koishi-plugin-canvas is not installed, disposed.')
+    return
+  }
 
   config = {
     disableCQCode: false,
@@ -39,13 +47,13 @@ module.exports.apply = async (ctx, config) => {
       path = config.upper.path
     }
 
-    registerFont(path, {
+    ctx.canvas.registerFont(path, {
       family: '5k-upper',
       weight: upperFormat.weight
     })
     upperFormat.font = '5k-upper'
   } catch {
-    logger.error('The font path for upper text does not exists.')
+    logger.debug('The font path for upper text does not exists.')
   }
 
   try {
@@ -58,22 +66,22 @@ module.exports.apply = async (ctx, config) => {
       path = config.lower.path
     }
 
-    registerFont(path, {
+    ctx.canvas.registerFont(path, {
       family: '5k-lower',
       weight: lowerFormat.weight
     })
     lowerFormat.font = '5k-lower'
   } catch {
-    logger.error('The font path for lower text does not exists.')
+    logger.debug('The font path for lower text does not exists.')
   }
 
   if (config.upper.name) upperFormat.font = config.upper.name
   if (config.upper.weight) upperFormat.weight = config.upper.weight
   if (config.lower.name) lowerFormat.font = config.lower.name
-  if (config.lower.weight) lowerFormat.font = config.lower.weight
+  if (config.lower.weight) lowerFormat.weight = config.lower.weight
 
   if (!upperFormat.font || !lowerFormat.font) {
-    logger.error('Fonts are not provided. The plugin is not installed.')
+    logger.error('Fonts are not provided. disposed.')
     return
   }
 
@@ -124,13 +132,13 @@ module.exports.apply = async (ctx, config) => {
         return '内容太长了。'
       }
 
-      const canvas = generateImage(upper, lower, parsed)
+      const canvas = generateImage(ctx.canvas, upper, lower, parsed)
 
       try {
-        const imageData = canvas.toBuffer().toString('base64')
+        const imageData = canvas.toBase64()
         return s('image', { url: `base64://${imageData}` })
       } catch (err) {
-        logger.warn('something went wrong when sending image')
+        logger.warn('Ssomething went wrong when sending image.')
         logger.warn(err)
       }
     })
