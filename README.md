@@ -5,7 +5,7 @@
 
 一个用于 **[Koishi v3](https://github.com/koishijs/koishi)** 的生成 **5000 兆円欲しい！** （想要五千兆円！）风格的插件。
 
-微调自这个 [5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了 [node-canvas](https://github.com/Automattic/node-canvas)。
+微调自这个 [5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了 [skia-canvas](https://github.com/samizdatco/skia-canvas)。
 
 ## 效果图
 
@@ -15,11 +15,11 @@
 
 ## 安装方法
 
-```shell
-npm i koishi-plugin-gosen-choyen
-```
+你需要安装 [koishi-plugin-canvas](https://github.com/idlist/koishi-plugin-canvas) 作为 [服务](https://koishi.js.org/guide/plugin/service.html) 依赖。
 
-然后参照 [安装插件](https://koishi.js.org/guide/context.html#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6) 继续安装。
+```shell
+npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
+```
 
 ## 使用方法
 
@@ -114,7 +114,7 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 ### 2.0.0
 
-对 v4 做了一个很简陋的适配。如果仍然需要用 v3 请使用 v0.1 版本。
+对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。如果仍然需要用 v3 请使用 v1.0 版本。
 
 ### 1.1.0
 
