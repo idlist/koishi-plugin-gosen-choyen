@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 [![npm-download](https://img.shields.io/npm/dw/koishi-plugin-gosen-choyen?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-gosen-choyen)
 
-一个用于 **[Koishi v3](https://github.com/koishijs/koishi)** 的生成 **5000 兆円欲しい！** （想要五千兆円！）风格的插件。
+一个用于 **[Koishi v4](https://github.com/koishijs/koishi)** 的生成 **5000 兆円欲しい！** （想要五千兆円！）风格的插件。
 
 微调自这个 [5000Choyen](https://github.com/yurafuca/5000choyen)，图片的生成使用了 [skia-canvas](https://github.com/samizdatco/skia-canvas)。
 
@@ -13,6 +13,8 @@
 
 <img width='200px' src='./examples/nantong.png'>
 
+图中使用的字体为思源黑体 Heavy 和思源宋体 Heavy。
+
 ## 安装方法
 
 你需要安装 [koishi-plugin-canvas](https://github.com/idlist/koishi-plugin-canvas) 作为 [服务](https://koishi.js.org/guide/plugin/service.html) 依赖。
@@ -20,6 +22,8 @@
 ```shell
 npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 ```
+
+然后在配置文件或入口文件中将插件添加至你的机器人中。
 
 ## 使用方法
 
@@ -85,23 +89,6 @@ npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 
 ## Q&A
 
-- 为什么我卡在这一步？
-
-```shell
-> canvas@2.6.1 install E:\dev\koishi-plugin-gosen-choyen\node_modules\canvas
-> node-pre-gyp install --fallback-to-build
-
-node-pre-gyp WARN Using needle for node-pre-gyp https download
-```
-
-这是因为你正在国内使用 npm，而 needle 在国内是几乎下载不动的。
-
-建议使用科学上网，或者提前使用其他国内镜像源安装 node-canvas 或是其中的二进制文件，比如下面这条：
-
-```shell
-npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-canvas-prebuilt/
-```
-
 - 我想要某个选项（比如缩放字体）
 
 建议`git clone`这个仓库然后自己拿去改一改，代码真的很简单的！
@@ -112,9 +99,13 @@ npm i canvas --canvas_binary_host_mirror=https://npm.taobao.org/mirrors/node-can
 
 ## 更新记录
 
+### 2.0.1
+
+修复文档。
+
 ### 2.0.0
 
-对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。如果仍然需要用 v3 请使用 v1.0 版本。
+对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。如果仍然需要用 v3 请使用 1.0 版本。
 
 ### 1.1.0
 
