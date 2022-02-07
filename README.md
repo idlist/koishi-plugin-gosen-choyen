@@ -99,6 +99,10 @@ npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 
 ## 更新记录
 
+### 2.0.2
+
+修复了某处的一个 `logger` 输出问题。
+
 ### 2.0.1
 
 修复文档。

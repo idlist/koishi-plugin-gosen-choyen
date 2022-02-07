@@ -20,7 +20,7 @@ module.exports.apply = async (ctx, config) => {
     // Require for checking and type linting
     require('koishi-plugin-canvas')
   } catch {
-    console.log('Dependency plugin koishi-plugin-canvas is not installed, disposed.')
+    logger.warn('Dependency plugin koishi-plugin-canvas is not installed, disposed.')
     return
   }
 
