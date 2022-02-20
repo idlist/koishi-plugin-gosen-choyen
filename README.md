@@ -101,28 +101,27 @@ npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 
 ### 2.0.2
 
-修复了某处的一个 `logger` 输出问题。
+- 修复了某处的一个 `logger` 输出问题。
 
-### 2.0.1
+- ### 2.0.1
 
 修复文档。
 
 ### 2.0.0
 
-对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。如果仍然需要用 v3 请使用 1.0 版本。
+- 对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。如果仍然需要用 v3 请使用 1.0 版本。
 
 ### 1.1.0
 
-取消了 `asSubcommand` 配置项，请使用 `ctx.command` 进行复写以实现相同的效果。
-
-将字体文件的配置项抽了出来，现在这个插件本身没有那么大了。
+- 取消了 `asSubcommand` 配置项，请使用 `ctx.command` 进行复写以实现相同的效果。
+- 将字体文件的配置项抽了出来，现在这个插件本身没有那么大了。
 
 ### 1.0.3
 
-修了点 bug 和与预期不符的行为。
+- 修了点 bug 和与预期不符的行为。
 
 ### 1.0.0
 
-默认的 Koishi 版本被修改为为 Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
+- 默认的 Koishi 版本被修改为为 Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
 
-若有需要，推荐使用 Koishi 自带的日志来进行行为的记录，例如把 command 行为的日志等级设置为 3（debug）。
+  若有需要，推荐使用 Koishi 自带的日志来进行行为的记录，例如把 command 行为的日志等级设置为 3（debug）。

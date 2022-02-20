@@ -31,7 +31,7 @@ module.exports.apply = async (ctx, config) => {
     maxOffsetX: 1000,
     fonts: {},
     fontsPath: {},
-    ...config
+    ...config,
   }
 
   const upperFormat = { font: '', weight: 'normal' }
@@ -49,7 +49,7 @@ module.exports.apply = async (ctx, config) => {
 
     ctx.canvas.registerFont(path, {
       family: '5k-upper',
-      weight: upperFormat.weight
+      weight: upperFormat.weight,
     })
     upperFormat.font = '5k-upper'
   } catch {
@@ -68,7 +68,7 @@ module.exports.apply = async (ctx, config) => {
 
     ctx.canvas.registerFont(path, {
       family: '5k-lower',
-      weight: lowerFormat.weight
+      weight: lowerFormat.weight,
     })
     lowerFormat.font = '5k-lower'
   } catch {
@@ -99,7 +99,7 @@ module.exports.apply = async (ctx, config) => {
         maxLength: config.maxLength,
         offsetX: !isNaN(options.offset) ? options.offset : config.defaultOffsetX,
         upper: { ...upperFormat },
-        lower: { ...lowerFormat }
+        lower: { ...lowerFormat },
       }
 
       if (config.disableCQCode) options.reserve = false
