@@ -99,6 +99,9 @@ npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 
 ## 更新记录
 
+<details>
+<summary><b>v2.0</b> （用于 Koishi v4）</summary>
+
 ### 2.0.2
 
 - 修复了某处的一个 `logger` 输出问题。
@@ -109,7 +112,14 @@ npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 
 ### 2.0.0
 
-- 对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。如果仍然需要用 v3 请使用 1.0 版本。
+- 对 v4 做了一个很简陋的适配，同时从 node-canvas 迁移到了 skia-canvas。
+
+如果仍然需要在 v3 中使用此插件，请使用 1.0 版本。
+
+</summary>
+
+<details>
+<summary><b>v1.0</b> （用于 Koishi v3）</summary>
 
 ### 1.1.0
 
@@ -124,4 +134,6 @@ npm i koishi-plugin-canvas koishi-plugin-gosen-choyen
 
 - 默认的 Koishi 版本被修改为为 Koishi v3，同时删掉了一些冗杂的日志（logger）信息。
 
-  若有需要，推荐使用 Koishi 自带的日志来进行行为的记录，例如把 command 行为的日志等级设置为 3（debug）。
+若有这方面的需要，推荐使用 Koishi 自带的日志来进行行为的记录，例如把内置的 command 服务的日志（logger）等级设置为 3（debug）。
+
+</details>
