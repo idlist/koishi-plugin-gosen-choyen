@@ -1,7 +1,7 @@
 const { access } = require('fs/promises')
 const { resolve } = require('path')
 const { cwd } = require('process')
-const { s } = require('koishi')
+const { segment } = require('koishi')
 const generateImage = require('./generate-image')
 
 
@@ -121,8 +121,8 @@ module.exports.apply = async (ctx, config) => {
         lower = clearCQCode(lower)
       }
 
-      upper = s.unescape(validateInput(upper))
-      lower = s.unescape(validateInput(lower))
+      upper = segment.unescape(validateInput(upper))
+      lower = segment.unescape(validateInput(lower))
 
       if (!upper && !lower) {
         return session.execute('help 5k')
@@ -136,7 +136,7 @@ module.exports.apply = async (ctx, config) => {
 
       try {
         const imageData = canvas.toBase64()
-        return s('image', { url: `base64://${imageData}` })
+        return segment('image', { url: `base64://${imageData}` })
       } catch (err) {
         logger.warn('Ssomething went wrong when sending image.')
         logger.warn(err)
