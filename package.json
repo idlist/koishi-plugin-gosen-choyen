@@ -18,7 +18,9 @@
     "url": "https://github.com/idlist/koishi-plugin-gosen-choyen/issues"
   },
   "dependencies": {
-    "koishi": "^4.0.0",
-    "koishi-plugin-canvas": "^0.1.0"
+    "koishi-plugin-canvas": "^0.2.0"
+  },
+  "peerDependencies": {
+    "koishi": "^4.0.0"
   }
 }
