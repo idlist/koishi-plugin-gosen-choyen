@@ -7,7 +7,7 @@ const generateImage = require('./generate-image')
 
 module.exports.name = 'gosen-choyen'
 
-module.exports.using = ['canvas']
+module.exports.inject = ['canvas']
 
 /**
  * @param {import('koishi').Context} ctx
@@ -106,13 +106,13 @@ module.exports.apply = async (ctx, config) => {
       if (parsed.offsetX < 0) parsed.offsetX = 0
       if (parsed.offsetX > config.maxOffsetX) parsed.offsetX = config.maxOffsetX
 
-      const validateInput = str => {
+      const validateInput = (str) => {
         return (typeof str == 'undefined')
           ? ''
           : str.toString().trim().replace(/\r\n/g, ' ')
       }
 
-      const clearCQCode = str => {
+      const clearCQCode = (str) => {
         return str.replace(/\[CQ:.+\]/g, '')
       }
 
